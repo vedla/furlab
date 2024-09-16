@@ -43,6 +43,12 @@
         "projectId": "483f880a-454b-47fe-ad30-b51301de1344"
       }
     },
-    "owner": "vedla"
+    "owner": "vedla",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/483f880a-454b-47fe-ad30-b51301de1344"
+    }
   }
 }
