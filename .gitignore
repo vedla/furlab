@@ -12,6 +12,12 @@ web-build/
 # expo router
 expo-env.d.ts
 
+# editor
+.vscode/
+.idea/
+
+
+
 # firebase/supabase/vexo
 .env
 
