@@ -14,8 +14,10 @@ async function reverseSearchImage(
   platforms: SupportedPlatform[]
 ): Promise<AxiosResponse<FluffleResult> | void> {
   try {
+    // Resize the image
     const resizedImageUri: string = (await resizeImage(imageUri)) as string;
 
+    // Create a FormData object
     const formData = new FormData();
     formData.append('file', {
       uri: resizedImageUri,
@@ -23,16 +25,20 @@ async function reverseSearchImage(
       type: 'image/png',
     } as unknown as Blob);
 
-    formData.append('platforms', JSON.stringify(platforms)); // Use the typed platforms array
+    // append query settings
+    formData.append('platforms', JSON.stringify(platforms));
     formData.append('includeNsfw', 'false');
     formData.append('limit', '8');
 
-    const appVersion = Constants.expoConfig?.version || '1.0.0'; // Fallback to '1.0.0' if undefined
-    // Create User-Agent string
+    // Fallback to '1.0.0' if undefined
+    const appVersion = Constants.expoConfig?.version || '1.0.0';
+
+    // User-Agent
     const userAgent = `Furlab/${appVersion} (by Codi on ${Platform.OS} GH: CodiAsFox e: codi@vedla.io)`;
 
-    console.log(userAgent);
+    // console.log(userAgent);
 
+    // Send the request
     const response: AxiosResponse<FluffleResult> = await axios.post(
       'https://api.fluffle.xyz/v1/search',
       formData,
@@ -44,8 +50,9 @@ async function reverseSearchImage(
       }
     );
 
-    console.log(response.data);
+    // console.log(response.data);
 
+    // Return the response
     return response;
   } catch (error) {
     console.error('Error during reverse image search: ', error);
