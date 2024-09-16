@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "furlab",
+    "name": "Furlab",
     "slug": "furlab",
     "version": "1.0.0",
     "scheme": "furlab",
@@ -37,6 +37,12 @@
         "backgroundColor": "#ffffff"
       },
       "package": "io.vedla.furlab"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "483f880a-454b-47fe-ad30-b51301de1344"
+      }
+    },
+    "owner": "vedla"
   }
 }

@@ -4,9 +4,24 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
+      "@components/*": [
+        "./components/*"
+      ],
+      "@screens/*": [
+        "./screens/*"
+      ],
+      "@navigation/*": [
+        "./navigation/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@customTypes/*": [
+        "./types/*",
+      ],
       "~/*": [
         "./*"
-      ]
+      ],
     }
   },
   "include": [
