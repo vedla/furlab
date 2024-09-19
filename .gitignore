@@ -16,7 +16,8 @@ expo-env.d.ts
 .vscode/
 .idea/
 
-
+# Assets not authorized for redistribution
+src/assets/licensed/
 
 # firebase/supabase/vexo
 .env
@@ -29,3 +30,10 @@ android
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+supabase/.temp/
+
+# Yarn Crap
+.yarn/
+!.yarn/releases
+!.yarn/plugins
+.pnp.*

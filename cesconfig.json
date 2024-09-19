@@ -3,10 +3,10 @@
   "projectName": "furlab",
   "packages": [
     {
-      "name": "expo-router",
+      "name": "furlab",
       "type": "navigation",
       "options": {
-        "type": "tabs"
+        "type": "drawer + tabs"
       }
     },
     {
@@ -39,17 +39,17 @@
     "noInstall": false,
     "overwrite": false,
     "importAlias": true,
-    "packageManager": "npm",
+    "packageManager": "yarn",
     "eas": false
   },
   "packageManager": {
-    "type": "npm",
-    "version": "10.7.0"
+    "type": "yarn",
+    "version": "1.22.22"
   },
   "os": {
     "type": "Darwin",
     "platform": "darwin",
     "arch": "x64",
-    "kernelVersion": "23.6.0"
+    "kernelVersion": "24.0.0"
   }
 }
