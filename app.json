@@ -4,44 +4,60 @@
     "slug": "furlab",
     "version": "1.0.0",
     "scheme": "furlab",
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true,
-      "tsconfigPaths": true
-    },
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+    "developmentClient": {
+      "silentLaunch": true
     },
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#241b45"
+    },
+    "backgroundColor": "#241b45",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "io.vedla.furlab"
+      "bundleIdentifier": "io.vedla.furlab",
+      "icon": "./src/assets/icon/ios/AppIcon~ios-marketing.png"
     },
     "android": {
+      "icon": "./src/assets/icon/android/res/mipmap-xxxhdpi/ic_launcher.png",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./src/assets/icon/android/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+        "backgroundImage": "./src/assets/icon/android/res/mipmap-xxxhdpi/ic_launcher_background.png",
+        "monochromeImage": "./src/assets/icon/android/res/mipmap-xxxhdpi/ic_launcher_monochrome.png"
       },
       "package": "io.vedla.furlab"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow $(PRODUCT_NAME) to use Face ID for easy app unlock."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos so you can pick the image you would like to search."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "tsconfigPaths": true
     },
     "extra": {
       "eas": {
         "projectId": "483f880a-454b-47fe-ad30-b51301de1344"
-      }
+      },
+      "blurHash": "MDGID}4UIi_M5JyJ|P%zD}OaY6:8?c?E5Q"
     },
     "owner": "vedla",
     "runtimeVersion": {

@@ -1,0 +1,250 @@
+{
+    "@config-plugins/apple-settings@2.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/config-plugins",
+        "licenseUrl": "https://github.com/expo/config-plugins",
+        "parents": "furlab"
+    },
+    "@expo/react-native-action-sheet@4.1.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/react-native-action-sheet",
+        "licenseUrl": "https://github.com/expo/react-native-action-sheet/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "@expo/vector-icons@14.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/vector-icons",
+        "licenseUrl": "https://github.com/expo/vector-icons/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "@gorhom/bottom-sheet@4.6.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/gorhom/react-native-bottom-sheet",
+        "licenseUrl": "https://github.com/gorhom/react-native-bottom-sheet/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "@react-native-async-storage/async-storage@1.21.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-native-async-storage/async-storage",
+        "licenseUrl": "https://github.com/react-native-async-storage/async-storage/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "@react-native-community/datetimepicker@8.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-native-community/datetimepicker",
+        "licenseUrl": "https://github.com/react-native-community/datetimepicker/raw/master/LICENSE.md",
+        "parents": "furlab"
+    },
+    "@react-native-community/slider@4.5.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/callstack/react-native-slider",
+        "licenseUrl": "https://github.com/callstack/react-native-slider",
+        "parents": "furlab"
+    },
+    "@react-native-picker/picker@2.7.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-native-picker/picker",
+        "licenseUrl": "https://github.com/react-native-picker/picker/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "@react-navigation/native@6.1.18": {
+        "licenses": "MIT",
+        "repository": "https://github.com/react-navigation/react-navigation",
+        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "@rn-primitives/avatar@1.0.5": {
+        "licenses": "MIT",
+        "parents": "furlab"
+    },
+    "@roninoss/icons@0.0.4": {
+        "licenses": "UNKNOWN",
+        "parents": "furlab"
+    },
+    "@shopify/flash-list@1.6.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/Shopify/flash-list",
+        "licenseUrl": "https://github.com/Shopify/flash-list/raw/master/LICENSE.md",
+        "parents": "furlab"
+    },
+    "@supabase/supabase-js@2.45.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/supabase/supabase-js",
+        "licenseUrl": "https://github.com/supabase/supabase-js/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "axios@1.7.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/axios/axios",
+        "licenseUrl": "https://github.com/axios/axios/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "class-variance-authority@0.7.0": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/joe-bell/cva",
+        "licenseUrl": "https://github.com/joe-bell/cva",
+        "parents": "furlab"
+    },
+    "clsx@2.1.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/lukeed/clsx",
+        "licenseUrl": "https://github.com/lukeed/clsx/raw/master/license",
+        "parents": "furlab"
+    },
+    "expo-constants@16.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo-dev-client@4.0.26": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo-dev-launcher@4.0.27": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo-linking@6.3.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo-navigation-bar@3.0.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo-router@3.5.23": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo-status-bar@1.12.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo-store-review@7.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo-system-ui@3.0.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo-updates@0.25.24": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo-web-browser@13.0.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "expo@51.0.32": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "furlab"
+    },
+    "nativewind@4.1.10": {
+        "licenses": "MIT",
+        "repository": "https://github.com/marklawlor/nativewind",
+        "licenseUrl": "https://github.com/marklawlor/nativewind/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "prettier-plugin-tailwindcss@0.5.14": {
+        "licenses": "MIT",
+        "repository": "https://github.com/tailwindlabs/prettier-plugin-tailwindcss",
+        "licenseUrl": "https://github.com/tailwindlabs/prettier-plugin-tailwindcss/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react-dom@18.2.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/react",
+        "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react-native-gesture-handler@2.16.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/software-mansion/react-native-gesture-handler",
+        "licenseUrl": "https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react-native-image-resizer@1.4.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/bamlab/react-native-image-resizer",
+        "licenseUrl": "https://github.com/bamlab/react-native-image-resizer/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react-native-pager-view@6.3.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/callstack/react-native-pager-view",
+        "licenseUrl": "https://github.com/callstack/react-native-pager-view/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react-native-reanimated@3.10.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/software-mansion/react-native-reanimated",
+        "licenseUrl": "https://github.com/software-mansion/react-native-reanimated/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react-native-safe-area-context@4.10.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/th3rdwave/react-native-safe-area-context",
+        "licenseUrl": "https://github.com/th3rdwave/react-native-safe-area-context/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react-native-screens@3.31.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/software-mansion/react-native-screens",
+        "licenseUrl": "https://github.com/software-mansion/react-native-screens/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react-native-uitextview@1.3.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/bluesky-social/react-native-uitextview",
+        "licenseUrl": "https://github.com/bluesky-social/react-native-uitextview/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react-native-web@0.19.12": {
+        "licenses": "MIT",
+        "repository": "https://github.com/necolas/react-native-web",
+        "licenseUrl": "https://github.com/necolas/react-native-web/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react-native@0.74.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/react-native",
+        "licenseUrl": "https://github.com/facebook/react-native/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "react@18.2.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/facebook/react",
+        "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+        "parents": "furlab"
+    },
+    "tailwind-merge@2.5.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/dcastil/tailwind-merge",
+        "licenseUrl": "https://github.com/dcastil/tailwind-merge/raw/master/LICENSE.md",
+        "parents": "furlab"
+    }
+}
