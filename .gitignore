@@ -22,8 +22,8 @@ src/assets/licensed/
 # firebase/supabase/vexo
 .env
 
-ios
-android
+/ios
+/android
 
 # macOS
 .DS_Store
