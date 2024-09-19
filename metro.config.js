@@ -1,9 +1,26 @@
-// Learn more https://docs.expo.io/guides/customizing-metro
+/* eslint-disable @typescript-eslint/no-var-requires */
+require('ts-node/register');
+
+/**
+ * This file contains the configuration for Metro, the JavaScript bundler used by Expo.
+ */
 const { getDefaultConfig } = require('expo/metro-config');
 const { withNativeWind } = require('nativewind/metro');
 
-/** @type {import('expo/metro-config').MetroConfig} */
-// eslint-disable-next-line no-undef
-const config = getDefaultConfig(__dirname);
+module.exports = (() => {
+  const config = getDefaultConfig(__dirname);
 
-module.exports = withNativeWind(config, { input: './global.css', inlineRem: 16 });
+  const { transformer, resolver } = config;
+
+  config.transformer = {
+    ...transformer,
+    babelTransformerPath: require.resolve('react-native-svg-transformer'),
+  };
+  config.resolver = {
+    ...resolver,
+    assetExts: resolver.assetExts.filter((ext) => ext !== 'svg'),
+    sourceExts: [...resolver.sourceExts, 'svg'],
+  };
+
+  return withNativeWind(config, { input: './src/global.css' });
+})();
