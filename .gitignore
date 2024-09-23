@@ -25,6 +25,9 @@ src/assets/licensed/
 /ios
 /android
 
+# Build files
+build-*.tar.gz
+
 # macOS
 .DS_Store
 

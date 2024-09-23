@@ -16,6 +16,15 @@ module.exports = {
         primary: {
           DEFAULT: withOpacity('primary'),
           foreground: withOpacity('primary-foreground'),
+          100: '#CBF0F9',
+          200: '#9ADCF4',
+          300: '#64B7DF',
+          400: '#3B8DC0',
+          500: '#241b45',
+          600: '#084681',
+          700: '#06346C',
+          800: '#032457',
+          900: '#021A48',
         },
         secondary: {
           DEFAULT: withOpacity('secondary'),
