@@ -6,7 +6,7 @@ import { Input } from '@AppComponents';
 
 import { Button } from '@ui-kitten/components';
 
-export default function Login() {
+export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -19,6 +19,21 @@ export default function Login() {
     });
 
     if (error) Alert.alert(error.message);
+    setLoading(false);
+  }
+
+  async function signUpWithEmail() {
+    setLoading(true);
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    });
+
+    if (error) Alert.alert(error.message);
+    if (!session) Alert.alert('Please check your inbox for email verification!');
     setLoading(false);
   }
 
@@ -46,19 +61,10 @@ export default function Login() {
         />
       </View>
       <View className="mt-5 gap-4">
-        <Button
-          disabled={loading}
-          onPress={() => signInWithEmail()}
-          appearance="filled"
-          status="primary">
-          Sign in
-        </Button>
-      </View>
-      {/* <View>
         <Button disabled={loading} onPress={() => signUpWithEmail()}>
           Sign up
         </Button>
-      </View> */}
+      </View>
     </View>
   );
 }

@@ -14,7 +14,7 @@ import { LoadFonts } from '@/constants/theme';
 
 import '@/global.css';
 import 'expo-dev-client';
-
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider as NavThemeProvider } from '@react-navigation/native';
@@ -49,6 +49,7 @@ export default function RootLayout() {
 
   const { isDarkColorScheme } = useColorScheme();
   const { fontsLoaded, fontError } = LoadFonts();
+  const themeColour = !isDarkColorScheme ? 'light' : 'dark';
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
@@ -61,15 +62,11 @@ export default function RootLayout() {
 
   SplashScreen.hideAsync();
 
-  const themeColour = !isDarkColorScheme ? 'light' : 'dark';
-
   return (
     <>
       <StatusBar key={`root-status-bar-${themeColour}`} style={themeColour} />
-
       <ApplicationProvider {...eva} theme={eva[themeColour]}>
         <IconRegistry icons={EvaIconsPack} />
-
         <DataProvider>
           <RootLayoutNav />
         </DataProvider>
@@ -101,7 +98,7 @@ function RootLayoutNav() {
   }, [isConnected]);
 
   return (
-    <View className="dark flex-1">
+    <>
       {isConnected === true ? (
         <Navigation />
       ) : (
@@ -123,12 +120,12 @@ function RootLayoutNav() {
           </Button>
         </View>
       )}
-    </View>
+    </>
   );
 }
 
 const SCREEN_OPTIONS = {
-  animation: 'ios', // for android
+  animation: 'ios',
 } as const;
 
 const DRAWER_OPTIONS = {
@@ -137,7 +134,7 @@ const DRAWER_OPTIONS = {
 
 const MODAL_OPTIONS = {
   presentation: 'modal',
-  animation: 'fade_from_bottom', // for android
+  animation: 'fade_from_bottom',
   title: 'Settings',
   headerRight: () => <ThemeToggle />,
 } as const;
@@ -146,16 +143,19 @@ function Navigation() {
   const { colorScheme } = useColorScheme();
   return (
     <GestureHandlerRootView>
-      <BottomSheetModalProvider>
-        <ActionSheetProvider>
-          <NavThemeProvider value={NAV_THEME[colorScheme]}>
-            <Stack screenOptions={SCREEN_OPTIONS}>
-              <Stack.Screen name="(drawer)" options={DRAWER_OPTIONS} />
-              <Stack.Screen name="modal" options={MODAL_OPTIONS} />
-            </Stack>
-          </NavThemeProvider>
-        </ActionSheetProvider>
-      </BottomSheetModalProvider>
+      <SafeAreaProvider>
+        <BottomSheetModalProvider>
+          <ActionSheetProvider>
+            <NavThemeProvider value={NAV_THEME[colorScheme]}>
+              <Stack screenOptions={SCREEN_OPTIONS}>
+                <Stack.Screen name="(drawer)" options={DRAWER_OPTIONS} />
+                <Stack.Screen name="(onboarding)" options={DRAWER_OPTIONS} />
+                <Stack.Screen name="modal" options={MODAL_OPTIONS} />
+              </Stack>
+            </NavThemeProvider>
+          </ActionSheetProvider>
+        </BottomSheetModalProvider>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }

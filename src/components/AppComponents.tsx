@@ -31,9 +31,10 @@ import {
   Modal,
   OverflowMenu,
 } from '@ui-kitten/components';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 // import LottieView from 'lottie-react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+// import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { Image } from 'expo-image';
 
 /**
