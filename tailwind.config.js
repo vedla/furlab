@@ -3,7 +3,7 @@ const { hairlineWidth, platformSelect } = require('nativewind/theme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // NOTE: Update this to include the paths to all of your component files.
-  content: ['./app/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
@@ -16,6 +16,15 @@ module.exports = {
         primary: {
           DEFAULT: withOpacity('primary'),
           foreground: withOpacity('primary-foreground'),
+          100: '#CBF0F9',
+          200: '#9ADCF4',
+          300: '#64B7DF',
+          400: '#3B8DC0',
+          500: '#241b45',
+          600: '#084681',
+          700: '#06346C',
+          800: '#032457',
+          900: '#021A48',
         },
         secondary: {
           DEFAULT: withOpacity('secondary'),
@@ -48,6 +57,9 @@ module.exports = {
     },
   },
   plugins: [],
+  corePlugin: {
+    backgroundOpacity: true,
+  },
 };
 
 function withOpacity(variableName) {

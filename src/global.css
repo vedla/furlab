@@ -1,0 +1,13 @@
+/**
+ * FILEPATH: src/app/global.css
+ *
+ * This CSS file includes the base, components, and utilities styles from Tailwind CSS.
+ *
+ * @tailwind base - The base styles provided by Tailwind CSS.
+ * @tailwind components - The pre-designed components provided by Tailwind CSS.
+ * @tailwind utilities - The utility classes provided by Tailwind CSS.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

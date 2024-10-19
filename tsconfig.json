@@ -1,15 +1,54 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
+      "@AppComponents*": [
+        "src/components/AppComponents.tsx"
+      ],
+      "@AppTranslation*": [
+        "src/translation/translation.ts"
+      ],
+      "@components*": [
+        "src/components/*"
+      ],
+      "@auth/*": [
+        "src/auth/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@navigation/*": [
+        "src/navigation/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@config/*": [
+        "src/config/*"
+      ],
+      "@context/*": [
+        "src/context/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@/*": [
+        "src/*"
+      ],
       "~/*": [
-        "./*"
-      ]
+        "src/*"
+      ],
     }
   },
   "include": [
+    "tailwind.config.js",
+    "src",
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
