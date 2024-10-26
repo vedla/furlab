@@ -18,23 +18,7 @@ import Markdown from 'react-native-markdown-display';
 cssInterop(Markdown, { className: 'style' });
 
 export default function DisclaimerScreen() {
-  const notice = `
-### Goodeals helps you discover the best offers nearby.
-
-To do this, we need access to your location.
-
-
-**Why Allow Location Access?**
-
-* **Find Deals**: Instantly locate exclusive offers and discounts near you.
-* **Save Time & Money**: Get personalized suggestions that match your interests and location.
-
-
-**Our Privacy Promise**
-
-* **Your Control**: Location access is only used to show you relevant offers; you can disable it anytime.
-* **No Data Storage**: Your location isn't stored on our servers.
-* **No Sharing**: We never share your location with third parties.`;
+  const notice = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget sapien. Nullam nec`;
 
   /**
    * Renders the location header component.
@@ -66,12 +50,12 @@ To do this, we need access to your location.
   }
 
   return (
-    <View className="bg-primary-500 container relative h-full">
+    <View className="container relative h-full bg-primary-500">
       <DisclamerHeader />
       <View className="flex-1">
         <View className="container h-screen flex-1 px-5">
           <Text className="font-raleway-bold mb-1 px-5 py-12 text-center text-3xl text-white">
-            Welcome to Goodeals!
+            Lorem ipsum dolor sit amet
           </Text>
           <View className="flex content-center justify-center text-white">
             <View className="px-7">
