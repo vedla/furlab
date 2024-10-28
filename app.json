@@ -34,6 +34,12 @@
       "package": "io.vedla.furlab"
     },
     "plugins": [
+      [
+        "expo-dev-launcher",
+        {
+          "launchMode": "most-recent"
+        }
+      ],
       "expo-router",
       "expo-localization",
       [
