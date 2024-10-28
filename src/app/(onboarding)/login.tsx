@@ -26,7 +26,7 @@ export default function Login() {
       <View className="container flex-1 p-5">
         <LoginForm />
       </View>
-      {/* {session && session.user && <Text>{session.user.id}</Text>} */}
+      {session && session.user && <Text>{session.user.id}</Text>}
     </View>
   );
 }

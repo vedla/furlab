@@ -6,6 +6,8 @@
 import React, { useState, useEffect, FC, createContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DataContextValue, DataProviderProps, StorageValue } from 'src/context/Types';
+import { supabase } from '@/utils/supabase';
+import { Session, User } from '@supabase/supabase-js';
 
 /**
  * The DataContext provides a context for sharing data across components.
@@ -64,6 +66,11 @@ const DataProvider: FC<DataProviderProps> = ({ children }) => {
   const [checkConnection, setCheckConnection] = useState<boolean>(true);
   const [doOnboarding, setDoOnboarding] = useState<boolean>(false);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [session, setSession] = useState<Session | null>(null);
+
+  const [user, setUser] = useState<User | null>(null);
+
   /**
    * Loads the initial data for the DataProvider.
    */
@@ -76,7 +83,34 @@ const DataProvider: FC<DataProviderProps> = ({ children }) => {
     }
   };
 
+  const loadUser = async () => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+
+      if (session) {
+        setIsLoggedIn(true);
+        setUser(session.user);
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    });
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+
+      if (session) {
+        setIsLoggedIn(true);
+        setUser(session.user);
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    });
+  };
+
   useEffect(() => {
+    // loadUser();
     loadInitialData();
   }, []);
 
