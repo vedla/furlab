@@ -10,6 +10,9 @@
       "ios": {
         "simulator": true
       },
+      "android": {
+        "image": "latest"
+      },
       "channel": "development-simulator"
     },
     "development": {
