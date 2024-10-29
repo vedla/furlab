@@ -1,4 +1,4 @@
-import { Text, View } from '@AppComponents';
+import { Text, View } from '~/components/AppComponents';
 
 import EditScreenInfo from './EditScreenInfo';
 

@@ -1,6 +1,6 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "jsx": "react",
     "target": "ES2020",
     "module": "commonjs",
     "strict": true,
@@ -48,7 +48,7 @@
       ],
       "~/*": [
         "src/*"
-      ],
+      ]
     }
   },
   "include": [
@@ -62,5 +62,6 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "extends": "expo/tsconfig.base"
 }

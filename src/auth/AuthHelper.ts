@@ -1,5 +1,8 @@
-import { supabase } from '@utils/supabase';
+import { DataContext } from '~/context/DataProvider';
+import { DataContextValue } from '~/context/Types';
+import { supabase } from '~/utils/supabase';
 import { router } from 'expo-router';
+import { useContext } from 'react';
 
 const AuthHelper = {
   getUser: async function () {
@@ -36,7 +39,8 @@ const AuthHelper = {
   signOut: async function () {
     try {
       const { error } = await supabase.auth.signOut();
-      router.replace('/(onboarding)');
+
+      router.replace('/(onboarding)/welcome');
       if (error) throw error;
     } catch (error) {
       console.error('Error signing out:', error);

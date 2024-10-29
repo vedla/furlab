@@ -1,8 +1,8 @@
 import RNSlider from '@react-native-community/slider';
 import { Platform } from 'react-native';
 
-import { useColorScheme } from '@/lib/useColorScheme';
-import { COLORS } from '@/theme/colors';
+import { useColorScheme } from '~/lib/useColorScheme';
+import { COLORS } from '~/theme/colors';
 
 function Slider({
   thumbTintColor,
