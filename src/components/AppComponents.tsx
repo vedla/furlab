@@ -30,8 +30,10 @@ import {
   Datepicker,
   Modal,
   OverflowMenu,
+  Icon,
 } from '@ui-kitten/components';
-import { View, SafeAreaView } from 'react-native';
+import { Link } from 'expo-router';
+import { View, SafeAreaView, ScrollView } from 'react-native';
 // import LottieView from 'lottie-react-native';
 // import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -72,10 +74,13 @@ cssInterop(Datepicker, { className: 'style' });
 cssInterop(Modal, { className: 'style' });
 cssInterop(OverflowMenu, { className: 'style' });
 cssInterop(Image, { className: 'style' });
+cssInterop(Link, { className: 'style' });
+// cssInterop(Icon, { className: 'style' });
 // cssInterop(LottieView, { className: 'style' });
 cssInterop(SafeAreaView, { className: 'style' });
 
 export {
+  ScrollView,
   Drawer,
   DrawerItem,
   Button,
@@ -87,6 +92,8 @@ export {
   Text,
   Card,
   List,
+  Icon,
+  Link,
   ListItem,
   TopNavigation,
   BottomNavigation,

@@ -5,9 +5,11 @@
 
 import React, { useState, useEffect, FC, createContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { DataContextValue, DataProviderProps, StorageValue } from 'src/context/Types';
-import { supabase } from '@/utils/supabase';
+import { DataContextValue, DataProviderProps, StorageValue } from '~/context/Types';
+import AuthHelper from '@/auth/AuthHelper';
 import { Session, User } from '@supabase/supabase-js';
+import { supabase } from '@utils/supabase';
+import { router } from 'expo-router';
 
 /**
  * The DataContext provides a context for sharing data across components.
@@ -64,18 +66,15 @@ const deleteData = async (key: string): Promise<void> => {
 const DataProvider: FC<DataProviderProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [checkConnection, setCheckConnection] = useState<boolean>(true);
-  const [doOnboarding, setDoOnboarding] = useState<boolean>(false);
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [session, setSession] = useState<Session | null>(null);
-
-  const [user, setUser] = useState<User | null>(null);
+  const [isUser, setIsUser] = useState<boolean>(false);
+  const [userToken, setToken] = useState<Session | null>(null);
 
   /**
    * Loads the initial data for the DataProvider.
    */
   const loadInitialData = async () => {
     try {
+      setToken(null);
       setIsLoading(false);
     } catch (error) {
       console.error('Failed to load initial data:', error);
@@ -83,49 +82,23 @@ const DataProvider: FC<DataProviderProps> = ({ children }) => {
     }
   };
 
-  const loadUser = async () => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-
-      if (session) {
-        setIsLoggedIn(true);
-        setUser(session.user);
-      } else {
-        setIsLoggedIn(false);
-        setUser(null);
-      }
-    });
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-
-      if (session) {
-        setIsLoggedIn(true);
-        setUser(session.user);
-      } else {
-        setIsLoggedIn(false);
-        setUser(null);
-      }
-    });
-  };
-
   useEffect(() => {
-    // loadUser();
     loadInitialData();
   }, []);
 
   const contextValue = {
+    setIsLoading,
     checkConnection,
     setCheckConnection,
-
     isLoading,
     loadInitialData,
-
     setData,
     deleteData,
     getData,
-    doOnboarding,
-    setDoOnboarding,
+    isUser,
+    setIsUser,
+    userToken,
+    setToken,
   };
 
   return <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>;

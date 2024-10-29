@@ -2,8 +2,8 @@ import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/d
 import * as React from 'react';
 import { Pressable, View } from 'react-native';
 
-import { Text } from '@/components/nativewindui/Text';
-import { cn } from '@/lib/cn';
+import { Text } from '~/components/nativewindui/Text';
+import { cn } from '~/lib/cn';
 
 export function DatePicker(
   props: React.ComponentProps<typeof DateTimePicker> & {

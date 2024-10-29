@@ -1,7 +1,8 @@
+import React from 'react';
 import { Stack } from 'expo-router';
 
-import { Container } from '@/components/Container';
-import { ScreenContent } from '@/components/ScreenContent';
+import { Container } from '~/components/Container';
+import { ScreenContent } from '~/components/ScreenContent';
 
 export default function Home() {
   return (

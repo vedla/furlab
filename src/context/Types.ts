@@ -1,11 +1,14 @@
 import { Dispatch, SetStateAction, ReactNode } from 'react';
 
 import { useStyleSheet } from '@ui-kitten/components';
+import { Session, User } from '@supabase/supabase-js';
 
 /**
  * Represents the value of the DataContext.
  */
-export type DataContextValue = {
+
+export interface DataContextValue {
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
   checkConnection: boolean;
   setCheckConnection: Dispatch<SetStateAction<boolean>>;
   isLoading: boolean;
@@ -13,9 +16,11 @@ export type DataContextValue = {
   setData: (key: string, value: StorageValue) => Promise<void>;
   deleteData: (key: string) => Promise<void>;
   getData: (key: string) => Promise<StorageValue | null>;
-  doOnboarding: boolean;
-  setDoOnboarding: Dispatch<SetStateAction<boolean>>;
-};
+  setIsUser: Dispatch<SetStateAction<boolean>>;
+  isUser: boolean;
+  userToken: Session | null;
+  setToken: Dispatch<SetStateAction<Session | null>>;
+}
 
 /**
  * Represents a value that can be stored in storage.
