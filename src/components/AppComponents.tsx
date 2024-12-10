@@ -14,6 +14,7 @@ import {
   ListItem,
   TopNavigation,
   BottomNavigation,
+  Spinner,
   Menu,
   MenuItem,
   Divider,
@@ -53,6 +54,7 @@ cssInterop(Select, { className: 'style' });
 cssInterop(CheckBox, { className: 'style' });
 cssInterop(Text, { className: 'style' });
 cssInterop(Card, { className: 'style' });
+cssInterop(Spinner, { className: 'style' });
 cssInterop(List, { className: 'style' });
 cssInterop(ListItem, { className: 'style' });
 cssInterop(TopNavigation, { className: 'style' });
@@ -114,6 +116,7 @@ export {
   Modal,
   OverflowMenu,
   Image,
+  Spinner,
   // LottieView,
   SafeAreaView,
   View,

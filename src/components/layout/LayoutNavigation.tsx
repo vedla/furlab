@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import * as SplashScreen from 'expo-splash-screen';
+import { SplashScreen } from 'expo-router';
 import NetInfo from '@react-native-community/netinfo';
 import { DataContext, DataContextValue } from 'src/context/DataProvider';
 import { LoadFonts } from '@/constants/theme';
@@ -8,23 +8,16 @@ import { Navigation } from '@componentslayout/Navigation';
 import AuthHelper from '@auth/AuthHelper';
 import { Slot } from 'expo-router';
 
+SplashScreen.preventAutoHideAsync();
+
 export function LayoutNavigation() {
   const [isConnected, setIsConnected] = useState<boolean | unknown>(true);
   const { setCheckConnection, setIsUser } = useContext(DataContext) as DataContextValue;
-  const { fontsLoaded, fontError } = LoadFonts();
+  // const { fontsLoaded, fontError } = LoadFonts();
 
-  useEffect(() => {
-    if (fontError) throw fontError;
-  }, [fontError]);
-
-  useEffect(() => {
-    loadUser();
-  }, [fontsLoaded]);
-
-  const loadUser = async () => {
-    const isUser = await AuthHelper.isUserSignedIn();
-    setIsUser(isUser);
-  };
+  // useEffect(() => {
+  //   if (fontError) throw fontError;
+  // }, [fontError]);
 
   const checkConnectionStatus = async () => {
     setCheckConnection(true);
@@ -37,17 +30,27 @@ export function LayoutNavigation() {
 
   useEffect(() => {
     checkConnectionStatus();
+    SplashScreen.hideAsync();
   }, [isConnected]);
 
-  useEffect(() => {
-    if (fontsLoaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
+  // useEffect(() => {
+  //   loadUser();
+  // }, [fontsLoaded]);
 
-  if (!fontsLoaded) {
-    return <Slot />;
-  }
+  const loadUser = async () => {
+    const isUser = await AuthHelper.isUserSignedIn();
+    setIsUser(isUser);
+  };
+
+  // useEffect(() => {
+  //   if (fontsLoaded) {
+  //     SplashScreen.hideAsync();
+  //   }
+  // }, [fontsLoaded]);
+
+  // if (!fontsLoaded) {
+  //   return <Slot />;
+  // }
 
   return isConnected === true ? (
     <Navigation />

@@ -1,11 +1,12 @@
-import React, { useState, ReactElement } from 'react';
+import React, { useState, ReactElement, useContext } from 'react';
 import { Alert } from 'react-native';
-
+import { router } from 'expo-router';
 import { supabase } from '~/utils/supabase';
 import { Text, View, Input, Link, Button } from '@AppComponents';
 import { IconElement, Icon, IconProps } from '@ui-kitten/components';
-
+import { DataContext, DataContextValue } from 'src/context/DataProvider';
 import { TouchableOpacity, ImageProps } from 'react-native';
+import AuthHelper from '@auth/AuthHelper';
 
 // // const AlertIcon = (props?: Partial<IconElement>): IconElement => (
 // //   // <Icon {...props} name="alert-circle-outline" />
@@ -41,6 +42,8 @@ export default function LoginForm() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const { setIsUser } = useContext(DataContext) as DataContextValue;
+
   async function signInWithEmail() {
     setLoading(true);
     const { error } = await supabase.auth.signInWithPassword({
@@ -48,10 +51,23 @@ export default function LoginForm() {
       password: password,
     });
 
-    if (error) Alert.alert(error.message);
+    if (error) {
+      Alert.alert(error.message);
+    } else {
+      await loadUser();
+    }
     setLoading(false);
   }
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  const loadUser = async () => {
+    setLoading(true);
+    const isUser = await AuthHelper.isUserSignedIn();
+    setIsUser(isUser);
+    setLoading(false);
+    console.info('User signed out [login form]:', isUser);
+    // router.replace('/(drawer)/one');
+  };
 
   const toggleSecureEntry = (): void => {
     setSecureTextEntry(!secureTextEntry);
@@ -70,8 +86,8 @@ export default function LoginForm() {
 
   return (
     <View className="flex-column flex h-full py-5">
-      <View className="container bg-slate-300 py-10">
-        <Text className="text-center" category="h2">
+      <View className="container bg-primary-600 py-10">
+        <Text className="text-center text-white" category="h2">
           Sign in to your account
         </Text>
       </View>
@@ -116,7 +132,7 @@ export default function LoginForm() {
             Sign in
           </Button>
         </View>
-        <Text className="mt-10 text-center">
+        <Text className="mt-10 text-center text-white">
           Forgot your password?{' '}
           <Link
             replace={true}
@@ -127,7 +143,7 @@ export default function LoginForm() {
         </Text>
       </View>
       <View className="mb-5 mt-5 gap-4 text-center">
-        <Text className="mt-5 text-center">
+        <Text className="mt-5 text-center text-white">
           Don't have an account?{' '}
           <Link
             href="/(onboarding)/disclaimer"

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as SplashScreen from 'expo-splash-screen';
+import { SplashScreen } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
@@ -8,6 +8,7 @@ import { DataProvider } from 'src/context/DataProvider';
 import { useColorScheme, useInitialAndroidBarSync } from '@/lib/useColorScheme';
 import { LayoutNavigation } from '@componentslayout/LayoutNavigation';
 import '@/global.css';
+import { SessionProvider } from '@auth/ctx';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -20,14 +21,14 @@ export default function RootLayout() {
   const themeColour = !isDarkColorScheme ? 'light' : 'dark';
 
   return (
-    <>
+    <ApplicationProvider {...eva} theme={eva[themeColour]}>
       <StatusBar key={`root-status-bar-${themeColour}`} style={themeColour} />
-      <ApplicationProvider {...eva} theme={eva[themeColour]}>
-        <IconRegistry icons={EvaIconsPack} />
-        <DataProvider>
+      <IconRegistry icons={EvaIconsPack} />
+      <DataProvider>
+        <SessionProvider>
           <LayoutNavigation />
-        </DataProvider>
-      </ApplicationProvider>
-    </>
+        </SessionProvider>
+      </DataProvider>
+    </ApplicationProvider>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext, useCallback, useState, useEffect } from 'react';
 import { View, Text, Button, Image } from '@AppComponents';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -9,20 +9,25 @@ import { DataContextValue } from '@context/Types';
 export default function Welcome() {
   // const insets = useSafeAreaInsets();
 
-  const { isUser, isLoading } = useContext(DataContext) as DataContextValue;
+  const { isUser, isLoading, setIsLoading } = useContext(DataContext) as DataContextValue;
+  const [isReady, setIsReady] = useState<boolean>(false);
   const router = useRouter();
 
-  useFocusEffect(
-    useCallback(() => {
-      if (isUser) {
-        router.navigate({ pathname: '/(drawer)/one' });
-      }
-    }, [isUser])
-  );
+  useEffect(() => {
+    console.log('StackLayout mounted');
+    return () => {
+      console.log('StackLayout unmounted');
+    };
+  }, []);
 
-  if (isLoading) {
-    return <Slot />;
-  }
+  useEffect(() => {
+    console.info('User logged in [navigation]:', isUser);
+    if (isUser) {
+      // router.navigate({ pathname: '/(drawer)/one' });
+    }
+    // setIsReady(true);
+    // setIsLoading(false);
+  }, [isUser]);
 
   return (
     <View className="dark container flex-1 items-center justify-center bg-primary-500 text-white">
@@ -44,13 +49,13 @@ export default function Welcome() {
         <View className="gap-4">
           <Button
             onPress={() => {
-              router.navigate({ pathname: '/(onboarding)/login' });
+              router.navigate({ pathname: '/(auth)/login' });
             }}>
             Login
           </Button>
           <Button
             onPress={() => {
-              router.navigate({ pathname: '/(onboarding)/disclaimer' });
+              router.navigate({ pathname: '/(auth)/disclaimer' });
             }}>
             Create an account
           </Button>

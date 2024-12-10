@@ -58,7 +58,8 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "nativewind-env.d.ts"
+    "nativewind-env.d.ts",
+    "supabase/supabase.ts"
   ],
   "exclude": [
     "node_modules"

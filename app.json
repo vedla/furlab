@@ -22,7 +22,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "io.vedla.furlab",
-      "icon": "./src/assets/icon/ios/AppIcon~ios-marketing.png"
+      "icon": "./src/assets/icon/ios/AppIcon~ios-marketing.png",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "icon": "./src/assets/icon/android/res/mipmap-xxxhdpi/ic_launcher.png",
@@ -34,6 +37,25 @@
       "package": "io.vedla.furlab"
     },
     "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#241b45",
+          "image": "/src/assets/icon.png",
+          "dark": {
+            "image": "/src/assets/icon.png",
+            "backgroundColor": "#241b45"
+          },
+          "imageWidth": 200
+        }
+      ],
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true,
+          "faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID."
+        }
+      ],
       [
         "expo-dev-launcher",
         {
@@ -68,9 +90,6 @@
     "owner": "vedla",
     "runtimeVersion": {
       "policy": "appVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/483f880a-454b-47fe-ad30-b51301de1344"
     }
   }
 }

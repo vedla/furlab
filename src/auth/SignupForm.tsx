@@ -162,7 +162,7 @@ export default function SignUp() {
           <Text className="mt-5 text-center text-white">
             Do you have an account?{' '}
             <Link
-              href="/(onboarding)/login"
+              href="/(auth)/login"
               replace={true}
               className="font-semibold underline decoration-solid">
               Sign in here

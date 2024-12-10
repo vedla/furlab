@@ -35,17 +35,6 @@ const AuthHelper = {
       return false;
     }
   },
-
-  signOut: async function () {
-    try {
-      const { error } = await supabase.auth.signOut();
-
-      router.replace('/(onboarding)/welcome');
-      if (error) throw error;
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  },
 };
 
 export default AuthHelper;

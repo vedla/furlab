@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
@@ -12,9 +12,21 @@ import { DataContext, DataContextValue } from 'src/context/DataProvider';
 import { supabase } from '@/utils/supabase';
 import AuthHelper from '@auth/AuthHelper';
 import { router } from 'expo-router';
+import { View, Spinner } from '@AppComponents';
 
-const SCREEN_OPTIONS = { animation: 'ios' } as const;
+export const unstable_settings = {
+  // Ensure any route can link back to `/`
+  initialRouteName: '(root)',
+};
+
+// export default function Layout() {
+//   return <Stack />;
+// }
+
+const SCREEN_OPTIONS = { animation: 'ios', headerShown: false } as const;
+const ROOT_OPTIONS = { headerShown: false } as const;
 const DRAWER_OPTIONS = { headerShown: false } as const;
+
 const MODAL_OPTIONS = {
   presentation: 'modal',
   animation: 'fade_from_bottom',
@@ -24,32 +36,35 @@ const MODAL_OPTIONS = {
 
 export function Navigation() {
   const { colorScheme } = useColorScheme();
-  const { setToken, isUser } = useContext(DataContext) as DataContextValue;
+  const { userToken, setUserToken, isUser, isLoading, setIsLoading, setIsUser } = useContext(
+    DataContext
+  ) as DataContextValue;
+
+  const [showOnboarding, setShowOnboarding] = useState<boolean>(true);
+  const [doneInit, setDoneInit] = useState<boolean>(false);
+
+  // console.log('isUser:', isUser);
+  // console.log('userToken:', userToken);
+  // console.log('showOnboarding:', showOnboarding);
 
   useEffect(() => {
-    const checkUserStatus = async () => {
-      if (isUser) {
-        const user = await AuthHelper.getUser();
-        if (user) {
-          console.info('User is signed in:', user);
-          const {
-            data: { session },
-          } = await supabase.auth.getSession();
-          if (session) {
-            setToken(session);
+    if (userToken) {
+      setShowOnboarding(false);
+    } else {
+      setShowOnboarding(true);
+    }
+    setDoneInit(true);
+  }, [userToken]);
 
-            router.replace({ pathname: '/(drawer)/one' });
-          }
-        } else {
-          console.info('User is not sign in');
-          router.replace({ pathname: '/(onboarding)/welcome' });
-        }
-      } else {
-        router.replace({ pathname: '/(onboarding)/welcome' });
-      }
-    };
-    checkUserStatus();
-  }, [isUser, setToken]);
+  // useEffect(() => {
+  //   setIsLoading(false);
+  //   // if (!doneInit) {
+  //   //   setDoneInit(true);
+  //   //   if (isUser) {
+  //   //     router.replace({ pathname: '/(drawer)/one' });
+  //   //   }
+  //   // }
+  // }, [doneInit]);
 
   return (
     <GestureHandlerRootView>
@@ -57,9 +72,14 @@ export function Navigation() {
         <BottomSheetModalProvider>
           <ActionSheetProvider>
             <NavThemeProvider value={NAV_THEME[colorScheme]}>
+              {isLoading ? (
+                <View className="loader">
+                  <Spinner status="control" size="giant" />
+                </View>
+              ) : null}
               <Stack screenOptions={SCREEN_OPTIONS}>
+                <Stack.Screen name="(root)" options={ROOT_OPTIONS} />
                 <Stack.Screen name="(drawer)" options={DRAWER_OPTIONS} />
-                <Stack.Screen name="(onboarding)" options={DRAWER_OPTIONS} />
                 <Stack.Screen name="modal" options={MODAL_OPTIONS} />
               </Stack>
             </NavThemeProvider>

@@ -28,7 +28,9 @@ const LoginHeader = ({ title }: LoginHeaderProps): ReactElement => {
    * @param {IconProps} props - The icon props.
    * @returns {IconElement} - The rendered icon component.
    */
-  const BackIcon = (props: IconProps): IconElement => <Icon {...props} name="arrow-back" />;
+  const BackIcon = (props: IconProps): IconElement => (
+    <Icon {...props} name="arrow-back" fill="white" />
+  );
 
   /**
    * Top navigation action component for the back action.
@@ -39,14 +41,17 @@ const LoginHeader = ({ title }: LoginHeaderProps): ReactElement => {
     return <TopNavigationAction icon={BackIcon} onPress={() => router.back()} />;
   };
 
+  const Title = (): ReactElement => (
+    <Text className="font-raleway600 text-lg text-white">Welcome back</Text>
+  );
+
   return (
-    <View>
+    <View className="bg-transparent">
       <TopNavigation
-        style={{ paddingTop: os === 'ios' ? 22 : insets.top + 12 }}
-        className="bg-light"
-        accessoryLeft={BackAction}
-        title={() => <Text className="font-raleway-bold mx-3 text-lg">{title}</Text>}
         alignment="center"
+        accessoryLeft={BackAction}
+        className="bg-transparent"
+        title={Title}
       />
     </View>
   );
@@ -56,7 +61,7 @@ export default function Login() {
   const [session, setSession] = useState<Session | null>(null);
 
   return (
-    <View className="dark flex-1">
+    <View className="container relative h-full bg-primary-500">
       <LoginHeader title="Welcome back" />
       <View className="container flex-1 p-5">
         <LoginForm />

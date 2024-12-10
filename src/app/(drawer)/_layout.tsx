@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { Link, router } from 'expo-router';
+import { Link, router, Slot } from 'expo-router';
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
 import { View } from 'react-native';
 import { Drawer } from 'expo-router/drawer';
@@ -8,20 +8,61 @@ import { HeaderButton } from '~/components/HeaderButton';
 import { Layout, Text, Button } from '@AppComponents';
 import { useNavigation } from '@react-navigation/native';
 import { supabase } from '@/utils/supabase';
-import { DataContext, DataContextValue } from '@context/DataProvider';
-import AuthHelper from '@auth/AuthHelper';
 
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
+import { DataContext, DataContextValue } from '@context/DataProvider';
+import AuthHelper from '@auth/AuthHelper';
 
 interface CustomDrawerContentProps extends DrawerContentComponentProps {}
 
 const CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
-  const navigation = useNavigation();
-
+  const { setUserToken, isUser, setIsUser, setIsLoading } = useContext(
+    DataContext
+  ) as DataContextValue;
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    router.replace('/(onboarding)/welcome'); // Replace with your actual sign-in screen path
+    try {
+      const { error } = await supabase.auth.signOut();
+      setUserToken(null);
+      setIsUser(false);
+      console.info('User signed out [drawer]:', isUser);
+      // router.replace('/(onboarding)/');
+      if (error) throw error;
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
   };
+
+  const loadUserProfile = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user?.id) {
+      const { data, error } = await supabase.from('user_profile').select('username').single();
+
+      console.info('User profile:', data);
+
+      // if (data) {
+      //     const { data, error } = await supabase
+      //       .from('user_profile')
+      //       .insert([{ some_column: 'someValue', other_column: 'otherValue' }])
+      //       .select();
+      // }
+
+      if (error) {
+        console.error('Error fetching user profile:', error);
+        return;
+      }
+    }
+
+    // console.log('User:', user?.id);
+  };
+
+  useEffect(() => {
+    if (isUser) {
+      loadUserProfile();
+    }
+  }, [isUser]);
 
   return (
     <DrawerContentScrollView {...props}>

@@ -19,7 +19,7 @@ export interface DataContextValue {
   setIsUser: Dispatch<SetStateAction<boolean>>;
   isUser: boolean;
   userToken: Session | null;
-  setToken: Dispatch<SetStateAction<Session | null>>;
+  setUserToken: Dispatch<SetStateAction<Session | null>>;
 }
 
 /**

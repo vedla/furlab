@@ -30,7 +30,7 @@ export default function NotFoundScreen() {
           </Text>
           <Button
             onPress={() => {
-              router.navigate({ pathname: '/(drawer)' });
+              router.replace({ pathname: '/' });
             }}>
             Go to home screen
           </Button>

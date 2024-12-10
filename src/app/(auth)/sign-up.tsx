@@ -1,26 +1,4 @@
 import SignUpForm from '@auth/SignupForm';
-// export default function Login() {
-//   const [session, setSession] = useState<Session | null>(null);
-
-//   useEffect(() => {
-//     supabase.auth.getSession().then(({ data: { session } }) => {
-//       setSession(session);
-//     });
-
-//     supabase.auth.onAuthStateChange((_event, session) => {
-//       setSession(session);
-//     });
-//   }, []);
-//   return (
-//     <View className="dark flex-1">
-//       <LoginHeader title="Create an Account" />
-//       <View className="container flex-1 p-5">
-//         <SignUp />
-//       </View>
-//       {/* {session && session.user && <Text>{session.user.id}</Text>} */}
-//     </View>
-//   );
-// }
 
 import { router } from 'expo-router';
 import {
