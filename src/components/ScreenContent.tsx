@@ -1,3 +1,4 @@
+import React from 'react';
 import { Text, View } from '~/components/AppComponents';
 
 import EditScreenInfo from './EditScreenInfo';

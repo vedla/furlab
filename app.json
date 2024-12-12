@@ -20,7 +20,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "io.vedla.furlab",
       "icon": "./src/assets/icon/ios/AppIcon~ios-marketing.png",
       "config": {

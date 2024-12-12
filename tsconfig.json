@@ -16,11 +16,11 @@
       "@AppTranslation*": [
         "src/translation/translation.ts"
       ],
-      "@components*": [
+      "@components/*": [
         "src/components/*"
       ],
       "@auth/*": [
-        "src/auth/*"
+        "src/components/components/Auth/*"
       ],
       "@hooks/*": [
         "src/hooks/*"
@@ -58,8 +58,7 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "nativewind-env.d.ts",
-    "supabase/supabase.ts"
+    "nativewind-env.d.ts"
   ],
   "exclude": [
     "node_modules"

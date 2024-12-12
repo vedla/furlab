@@ -1,4 +1,4 @@
-import SignUpForm from '@auth/SignupForm';
+import SignUpForm from '@components/SignupForm';
 
 import { router } from 'expo-router';
 import {

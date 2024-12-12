@@ -2,10 +2,7 @@ import React, { useContext } from 'react';
 import { Icon, Spinner } from '@ui-kitten/components';
 import { View, Text, Button } from '@AppComponents';
 import { DataContext, DataContextValue } from 'src/context/DataProvider';
-
-interface ConnectionStatusProps {
-  checkConnectionStatus: () => void;
-}
+import { ConnectionStatusProps } from '@/context/Types';
 
 export function ConnectionStatus({ checkConnectionStatus }: ConnectionStatusProps) {
   const { checkConnection } = useContext(DataContext) as DataContextValue;

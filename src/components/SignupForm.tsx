@@ -1,5 +1,5 @@
 import { Alert, Pressable } from 'react-native';
-import { supabase } from '@/utils/supabase';
+// import { supabase } from '@/utils/supabase';
 import { Text, View, Input, Link, Button, ScrollView, CheckBox } from '@AppComponents';
 import React, { useState, ReactElement } from 'react';
 import { Icon, IconProps } from '@ui-kitten/components';
@@ -56,7 +56,7 @@ export default function SignUp() {
     });
 
     if (error) {
-      Alert.alert(error.message);
+      Alert.alert(error instanceof Error ? error.message : String(error));
     } else if (data?.session) {
       Alert.alert('Success', 'Please check your inbox for email verification!');
 

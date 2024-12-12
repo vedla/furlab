@@ -2,10 +2,9 @@ import React, { ReactElement } from 'react';
 
 import { useState } from 'react';
 
-import LoginForm from '@/auth/LoginForm';
+import LoginForm from '@components/LoginForm';
 
 import { View, Text, Icon, TopNavigation } from '@AppComponents';
-import { Session } from '@supabase/supabase-js';
 
 import { Platform } from 'react-native';
 

@@ -2,10 +2,9 @@ import React, { ReactElement } from 'react';
 
 import { useState } from 'react';
 
-import LoginForm from '@/auth/LoginForm';
+import LoginForm from '@components/LoginForm';
 
 import { View, Text, Icon, TopNavigation } from '@AppComponents';
-import { Session } from '@supabase/supabase-js';
 
 import { Platform } from 'react-native';
 
@@ -58,7 +57,7 @@ const LoginHeader = ({ title }: LoginHeaderProps): ReactElement => {
 };
 
 export default function Login() {
-  const [session, setSession] = useState<Session | null>(null);
+  // const [session, setSession] = useState<Session | null>(null);
 
   return (
     <View className="container relative h-full bg-primary-500">

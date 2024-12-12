@@ -1,10 +1,11 @@
+import React from 'react';
 import { Icon } from '@roninoss/icons';
 import { Pressable, View } from 'react-native';
 import Animated, { LayoutAnimationConfig, ZoomInRotate } from 'react-native-reanimated';
 
 import { cn } from '~/lib/cn';
 import { useColorScheme } from '~/lib/useColorScheme';
-import { COLORS } from '~/theme/colors';
+import { COLORS } from '@/constants/Theme';
 
 export function ThemeToggle() {
   const { colorScheme, toggleColorScheme } = useColorScheme();

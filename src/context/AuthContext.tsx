@@ -1,13 +1,14 @@
 import React, { useContext, createContext, type PropsWithChildren } from 'react';
-import { useStorageState } from './useStorageState';
-import { Session } from '@supabase/supabase-js';
+import { useStorageState } from '../constants/useStorageState';
+import { Models } from 'react-native-appwrite';
+
 const AuthContext = createContext<{
-  signIn: (session: string | Session | null) => void;
+  setSessionToken: (session: string | true | Models.Session) => void;
   signOut: () => void;
-  sessionToken?: string | Session | null;
+  sessionToken?: string | null;
   isLoading: boolean;
 }>({
-  signIn: (session: string | Session | null) => null,
+  setSessionToken: (session: string | true | Models.Session) => null,
   signOut: () => null,
   sessionToken: null,
   isLoading: false,
@@ -31,7 +32,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
   return (
     <AuthContext.Provider
       value={{
-        signIn: (session: string | Session | null) => {
+        setSessionToken: (session: string | true | Models.Session) => {
           // Perform sign-in logic here
           setSessionToken(session as string);
         },
