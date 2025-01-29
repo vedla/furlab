@@ -1,0 +1,12 @@
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+**/dist
+**/vendor
+**/vendors
+**/chunks
+**/.vscode
+**/classes/HTTP_Request2
+**/*min.js
+**/*min.css

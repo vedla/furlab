@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Stack } from 'expo-router';
-import { View, Text } from '@AppComponents';
+import { View, Text } from '~/components/AppComponents';
 const { Screen } = Stack;
 
 export default function Home() {
