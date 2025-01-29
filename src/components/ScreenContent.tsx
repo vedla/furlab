@@ -1,4 +1,5 @@
-import { Text, View } from '@AppComponents';
+import React from 'react';
+import { Text, View } from '~/components/AppComponents';
 
 import EditScreenInfo from './EditScreenInfo';
 

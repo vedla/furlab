@@ -11,3 +11,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.loader {
+  flex: 1;
+  background-color: #241b45;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,6 +1,11 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "jsx": "react",
+    "target": "ES2020",
+    "module": "commonjs",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
@@ -11,11 +16,11 @@
       "@AppTranslation*": [
         "src/translation/translation.ts"
       ],
-      "@components*": [
+      "@components/*": [
         "src/components/*"
       ],
       "@auth/*": [
-        "src/auth/*"
+        "src/components/components/Auth/*"
       ],
       "@hooks/*": [
         "src/hooks/*"
@@ -43,7 +48,7 @@
       ],
       "~/*": [
         "src/*"
-      ],
+      ]
     }
   },
   "include": [
@@ -54,5 +59,9 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"
-  ]
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "extends": "expo/tsconfig.base"
 }

@@ -5,7 +5,11 @@
 
 import React, { useState, useEffect, FC, createContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { DataContextValue, DataProviderProps, StorageValue } from 'src/context/Types';
+import { DataContextValue, DataProviderProps, StorageValue } from '~/context/Types';
+import { router } from 'expo-router';
+import { useSession } from '@context/AuthContext';
+import { checkIfUserLoggedIn, getSession } from '@utils/appwrite';
+import { Models } from 'react-native-appwrite';
 
 /**
  * The DataContext provides a context for sharing data across components.
@@ -62,36 +66,71 @@ const deleteData = async (key: string): Promise<void> => {
 const DataProvider: FC<DataProviderProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [checkConnection, setCheckConnection] = useState<boolean>(true);
-  const [doOnboarding, setDoOnboarding] = useState<boolean>(false);
+  const [theUser, setTheUser] = useState<Models.Document | null>(null);
+  const [isLogged, setIsLogged] = useState<boolean>(false);
 
+  const { setSessionToken } = useSession();
   /**
    * Loads the initial data for the DataProvider.
    */
   const loadInitialData = async () => {
     try {
-      setIsLoading(false);
+      // setIsLoading(false);
     } catch (error) {
       console.error('Failed to load initial data:', error);
-      setIsLoading(false);
+      // setIsLoading(false);
+    }
+  };
+
+  // theUser;
+
+  // useEffect(() => {
+  //   loadInitialData();
+  //   checkUserStatus();
+  // }, []);
+
+  const checkUserStatus = async () => {
+    const theUser = await checkIfUserLoggedIn();
+
+    if (theUser) {
+      setIsLoading(true);
+      console.info('User is signed in:', theUser);
+
+      const session = await getSession();
+      console.log('session', session);
+
+      if (session) {
+        setSessionToken(session);
+        // setTheUser(true);
+        setIsLoading(false);
+        console.info('User logged in [dataProvider]:', theUser);
+        // router.replace({ pathname: '/(drawer)/one' });
+      }
+    } else {
+      console.info('User is not sign in');
+      console.info('User logged out [dataProvider]:', theUser);
+      // setTheUser(false);
+      // router.replace('/(onboarding)/');
     }
   };
 
   useEffect(() => {
-    loadInitialData();
+    checkUserStatus();
   }, []);
 
   const contextValue = {
+    setIsLoading,
     checkConnection,
     setCheckConnection,
-
     isLoading,
     loadInitialData,
-
     setData,
     deleteData,
     getData,
-    doOnboarding,
-    setDoOnboarding,
+    theUser,
+    setTheUser,
+    isLogged,
+    setIsLogged,
   };
 
   return <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>;
